@@ -21,4 +21,16 @@ public class User {
     public void setRole(String role) {
         this.role = role;
     }
+
+    public Object getUsername() {
+        return username;
+    }
+
+    public Object getId() {
+        return id;
+    }
+
+    public Object getRole() {
+        return role;
+    }
 }
