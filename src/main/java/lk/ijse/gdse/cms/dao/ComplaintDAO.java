@@ -1,6 +1,7 @@
 package lk.ijse.gdse.cms.dao;
 
 import lk.ijse.gdse.cms.model.Complaint;
+import lk.ijse.gdse.cms.util.DBConnection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,7 +14,7 @@ public class ComplaintDAO {
     public List<Complaint> getComplaintsByUser(int userId) {
         List<Complaint> list = new ArrayList<>();
 
-        try (Connection connection = DBConnection.getConnection()){
+        try (Connection connection = DBConnection.getInstance().getConnection()){
             String sql = "select * from complaints where user_id=?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, userId);

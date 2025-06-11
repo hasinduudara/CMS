@@ -1,6 +1,7 @@
 package lk.ijse.gdse.cms.dao;
 
 import lk.ijse.gdse.cms.model.User;
+import lk.ijse.gdse.cms.util.DBConnection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,7 +12,7 @@ public class UserDAO {
     public User login(String username, String password){
         User user = null;
 
-        try (Connection connection = DBConnection.getConnection()){
+        try (Connection connection = DBConnection.getInstance().getConnection()){
             String sql = "select * from users where username=? and password=?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, username);
