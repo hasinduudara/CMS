@@ -59,4 +59,8 @@ public class Complaint {
     public Object getDateSubmitted() {
         return complaintTime.toLocalDateTime();
     }
+
+    public Object getUserId() {
+        return userId;
+    }
 }
