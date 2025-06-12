@@ -28,7 +28,7 @@
         <br><br>
         <button type="submit">Login</button>
         <a href="jsp/signup.jsp">
-            <button>SingUp</button>
+            Don't have an account? Sign Up
         </a>
     </form>
 </div>
