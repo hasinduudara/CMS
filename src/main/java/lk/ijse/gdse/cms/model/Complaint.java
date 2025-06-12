@@ -63,4 +63,8 @@ public class Complaint {
     public Object getUserId() {
         return userId;
     }
+
+    public Object getRemark() {
+        return remark;
+    }
 }
