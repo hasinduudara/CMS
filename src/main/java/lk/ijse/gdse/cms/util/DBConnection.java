@@ -1,29 +1,23 @@
 package lk.ijse.gdse.cms.util;
 
+import org.apache.commons.dbcp2.BasicDataSource;
+
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DBConnection {
-    private static DBConnection dbConnection;
-    private final Connection connection;
-    private final String url = "jdbc:mysql://localhost:3306/cms_db";
-    private final String user = "root";
-    private final String password = "hasindu12345";
+    private static BasicDataSource basicDataSource = new BasicDataSource();
 
-    private DBConnection() throws SQLException {
-        connection = DriverManager.getConnection(url, user, password);
+    static {
+        basicDataSource.setUrl("jdbc:mysql://localhost:3306/cms_db");
+        basicDataSource.setUsername("root");
+        basicDataSource.setPassword("hasindu12345");
+        basicDataSource.setMinIdle(5);
+        basicDataSource.setMaxIdle(10);
+        basicDataSource.setMaxOpenPreparedStatements(100);
     }
 
-    public static DBConnection getInstance() throws SQLException {
-        if (dbConnection == null) {
-            dbConnection = new DBConnection();
-        }
-        return dbConnection;
-    }
-
-
-    public Connection getConnection() {
-        return connection;
+    public static Connection getConnection() throws SQLException {
+        return basicDataSource.getConnection();
     }
 }

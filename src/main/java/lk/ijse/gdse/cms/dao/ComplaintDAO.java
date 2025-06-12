@@ -14,7 +14,7 @@ public class ComplaintDAO {
     public List<Complaint> getComplaintsByUser(int userId) {
         List<Complaint> list = new ArrayList<>();
 
-        try (Connection connection = DBConnection.getInstance().getConnection()){
+        try (Connection connection = DBConnection.getConnection()){
             String sql = "select * from complaints where user_id=?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, userId);
