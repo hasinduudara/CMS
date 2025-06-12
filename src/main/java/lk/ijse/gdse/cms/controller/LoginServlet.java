@@ -25,7 +25,7 @@ public class LoginServlet extends HttpServlet {
             session.setAttribute("user", user.getUsername());
             session.setAttribute("userId", user.getId());
             session.setAttribute("role", user.getRole());
-            resp.sendRedirect("dashboard.jsp");
+            resp.sendRedirect("/jsp/dashboard.jsp");
         } else  {
             resp.getWriter().println("Invalid username or password");
         }
