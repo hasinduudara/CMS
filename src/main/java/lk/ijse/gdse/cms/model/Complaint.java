@@ -39,4 +39,24 @@ public class Complaint {
     public void setCreatedAt(LocalDateTime createdAt) {
         this.complaintTime = Timestamp.valueOf(createdAt);
     }
+
+    public Object getId() {
+        return id;
+    }
+
+    public Object getTitle() {
+        return title;
+    }
+
+    public Object getDescription() {
+        return description;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public Object getDateSubmitted() {
+        return complaintTime.toLocalDateTime();
+    }
 }
