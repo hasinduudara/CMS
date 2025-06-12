@@ -22,15 +22,11 @@ public class User {
         this.role = role;
     }
 
-    public Object getUsername() {
-        return username;
-    }
+    public String getUsername() { return username; }
 
-    public Object getId() {
-        return id;
-    }
+    public String getPassword() { return password; }
 
-    public Object getRole() {
-        return role;
-    }
+    public String getRole() { return role; }
+
+    public int getId() { return id; }
 }

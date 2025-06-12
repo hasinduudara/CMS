@@ -15,6 +15,8 @@ public class DBConnection {
         basicDataSource.setMinIdle(5);
         basicDataSource.setMaxIdle(10);
         basicDataSource.setMaxOpenPreparedStatements(100);
+
+        basicDataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
     }
 
     public static Connection getConnection() throws SQLException {
