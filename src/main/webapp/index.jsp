@@ -27,7 +27,9 @@
         <input type="password" name="password" required>
         <br><br>
         <button type="submit">Login</button>
-        <a href="jsp/dashboard.jsp">Dashboard</a>
+        <a href="jsp/signup.jsp">
+            <button>SingUp</button>
+        </a>
     </form>
 </div>
 </body>
