@@ -17,8 +17,10 @@
 <body>
 <div class="container">
     <h2>Login Page</h2>
-    <form action="../login" method="post">
-        <label>Username:</label>
+<%--    <form action="../login" method="post">--%>
+    <form action="${pageContext.request.contextPath}/login" method="post">
+
+    <label>Username:</label>
         <br>
         <input type="text" name="username" required>
         <br><br>

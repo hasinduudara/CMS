@@ -5,6 +5,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lk.ijse.gdse.cms.dao.UserDAO;
+import lk.ijse.gdse.cms.model.Role;
 import lk.ijse.gdse.cms.model.User;
 
 import java.io.IOException;
@@ -20,7 +21,7 @@ public class SignupServlet extends HttpServlet {
         User user = new User();
         user.setUsername(username);
         user.setPassword(password);
-        user.setRole(role);
+        user.setRole(Role.valueOf(role));
 
         boolean success = new UserDAO().register(user);
         if (success) {
