@@ -1,6 +1,7 @@
 package lk.ijse.gdse.cms.dao;
 
 import lk.ijse.gdse.cms.model.Complaint;
+import lk.ijse.gdse.cms.model.ComplaintStatus;
 import lk.ijse.gdse.cms.util.DBConnection;
 
 import java.sql.Connection;
@@ -26,7 +27,7 @@ public class ComplaintDAO {
                 complaint.setUserId(resultSet.getInt("user_id"));
                 complaint.setTitle(resultSet.getString("title"));
                 complaint.setDescription(resultSet.getString("description"));
-                complaint.setStatus(resultSet.getString("status"));
+                complaint.setStatus(ComplaintStatus.valueOf(resultSet.getString("status")));
                 complaint.setRemark(resultSet.getString("remark"));
                 complaint.setCreatedAt(resultSet.getTimestamp("created_at").toLocalDateTime());
                 list.add(complaint);
@@ -51,7 +52,7 @@ public class ComplaintDAO {
                 complaint.setUserId(resultSet.getInt("user_id"));
                 complaint.setTitle(resultSet.getString("title"));
                 complaint.setDescription(resultSet.getString("description"));
-                complaint.setStatus(resultSet.getString("status"));
+                complaint.setStatus(ComplaintStatus.valueOf(resultSet.getString("status")));
                 complaint.setRemark(resultSet.getString("remark"));
                 complaint.setCreatedAt(resultSet.getTimestamp("created_at").toLocalDateTime());
                 list.add(complaint);

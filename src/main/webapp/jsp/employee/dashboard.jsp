@@ -12,7 +12,7 @@
 <div class="container">
     <h2>Welcome, <%= username %> (Employee)</h2>
 
-    <a href="complaint_form.jsp" class="btn">+ Submit New Complaint</a>
+    <a href="jsp/employee/complaint_form.jsp" class="btn">+ Submit New Complaint</a>
 
     <h3>My Complaints</h3>
     <table>

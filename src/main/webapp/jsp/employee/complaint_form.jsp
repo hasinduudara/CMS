@@ -26,7 +26,7 @@
     <button type="submit">Submit Complaint</button>
   </form>
 
-  <br><a href="dashboard.jsp">← Back to Dashboard</a>
+  <br><a href="dashboard.jsp">Back to Dashboard</a>
 </div>
 </body>
 </html>

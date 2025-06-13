@@ -28,7 +28,7 @@ public class Complaint {
         this.description = description;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(ComplaintStatus status) {
         this.status = status;
     }
 
@@ -52,7 +52,7 @@ public class Complaint {
         return description;
     }
 
-    public String getStatus() {
+    public ComplaintStatus getStatus() {
         return status;
     }
 
