@@ -67,4 +67,8 @@ public class Complaint {
     public Object getRemark() {
         return remark;
     }
+
+    public Object getCreatedAt() {
+        return complaintTime.toLocalDateTime();
+    }
 }
