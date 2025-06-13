@@ -1,5 +1,6 @@
 package lk.ijse.gdse.cms.dao;
 
+import lk.ijse.gdse.cms.model.Role;
 import lk.ijse.gdse.cms.model.User;
 import lk.ijse.gdse.cms.util.DBConnection;
 
@@ -24,7 +25,7 @@ public class UserDAO {
                 user.setId(resultSet.getInt("id"));
                 user.setUsername(resultSet.getString("username"));
                 user.setPassword(resultSet.getString("password"));
-                user.setRole(resultSet.getString("role"));
+                user.setRole(Role.valueOf(resultSet.getString("role")));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -38,7 +39,7 @@ public class UserDAO {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, user.getUsername());
             ps.setString(2, user.getPassword());
-            ps.setString(3, user.getRole());
+            ps.setString(3, user.getRole().name());
 
             int rows = ps.executeUpdate();
             System.out.println("Inserted rows: " + rows);
