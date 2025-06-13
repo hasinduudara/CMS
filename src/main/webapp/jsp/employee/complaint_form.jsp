@@ -1,31 +1,33 @@
 <%--
   Created by IntelliJ IDEA.
   User: hasid
-  Date: 6/12/2025
-  Time: 10:08 AM
+  Date: 6/13/2025
+  Time: 12:06 PM
   To change this template use File | Settings | File Templates.
 --%>
 
-<%@page session="false" %>
-
+<%@ page session="true" %>
+<!DOCTYPE html>
 <html>
 <head>
-    <title>New Complaint</title>
+  <title>Submit Complaint</title>
 </head>
 <body>
 <div class="container">
-    <h2>Submit Complaint</h2>
-    <form name="complaintForm" action="../../submitComplaint" method="post" onsubmit="return validateComplaintForm();">
-        <label>Title:</label>
-        <br>
-        <input type="text" name="title" id="title" required>
-        <br><br>
-        <label>Description:</label>
-        <br>
-        <textarea name="description" rows="4" cols="50" id="description" required></textarea>
-        <br><br>
-        <button type="submit">Submit</button>
-    </form>
+  <h2>Submit New Complaint</h2>
+
+  <form action="../../submitComplaint" method="post">
+    <label for="title">Title:</label><br>
+    <input type="text" name="title" id="title" required><br><br>
+
+    <label for="description">Description:</label><br>
+    <textarea name="description" id="description" rows="5" cols="50" required></textarea><br><br>
+
+    <button type="submit">Submit Complaint</button>
+  </form>
+
+  <br><a href="dashboard.jsp">← Back to Dashboard</a>
 </div>
 </body>
 </html>
+

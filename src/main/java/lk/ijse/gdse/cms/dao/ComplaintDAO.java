@@ -61,4 +61,20 @@ public class ComplaintDAO {
         }
         return list;
     }
+
+    public boolean submitComplaint(Complaint complaint) {
+        try (Connection connection = DBConnection.getConnection()) {
+            String sql = "INSERT INTO complaints (user_id, title, description, status, created_at) VALUES (?, ?, ?, ?, NOW())";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, (Integer) complaint.getUserId());
+            preparedStatement.setString(2, (String) complaint.getTitle());
+            preparedStatement.setString(3, (String) complaint.getDescription());
+            preparedStatement.setString(4, "Pending");
+
+            int rowsAffected = preparedStatement.executeUpdate();
+            return rowsAffected > 0;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
