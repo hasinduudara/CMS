@@ -1,11 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: hasid
-  Date: 6/13/2025
-  Time: 12:06 PM
-  To change this template use File | Settings | File Templates.
---%>
-
 <%@ page session="true" %>
 <!DOCTYPE html>
 <html>
@@ -16,7 +8,12 @@
 <div class="container">
   <h2>Submit New Complaint</h2>
 
-  <form action="../../submitComplaint" method="post">
+  <%-- Add error message display --%>
+  <% if (request.getParameter("error") != null) { %>
+  <p style="color: red;">Failed to submit complaint. Please try again.</p>
+  <% } %>
+
+  <form action="${pageContext.request.contextPath}/submitComplaint" method="post">
     <label for="title">Title:</label><br>
     <input type="text" name="title" id="title" required><br><br>
 
@@ -27,8 +24,7 @@
   </form>
 
   <br>
-  <a href="<%= request.getContextPath() %>/jsp/employee/employeeDashboard.jsp">Back to Dashboard</a>
+  <a href="${pageContext.request.contextPath}/jsp/employee/dashboard.jsp">Back to Dashboard</a>
 </div>
 </body>
 </html>
-

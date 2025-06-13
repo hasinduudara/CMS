@@ -12,10 +12,10 @@ import java.io.IOException;
 
 @WebServlet("/submitComplaint")
 public class SubmitComplaintServlet extends HttpServlet {
-    protected void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
         HttpSession session = req.getSession(false);
         if (session == null || session.getAttribute("userId") == null) {
-            res.sendRedirect("jsp/login.jsp");
+            res.sendRedirect("jsp/employee/complaint_form.jsp");
             return;
         }
 
@@ -33,7 +33,7 @@ public class SubmitComplaintServlet extends HttpServlet {
         if (success) {
             res.sendRedirect(req.getContextPath() + "/jsp/employee/dashboard.jsp");
         } else {
-            res.getWriter().println("Failed to submit complaint. Try again.");
+            res.sendRedirect(req.getContextPath() + "/jsp/employee/complaint_form.jsp?error=true");
         }
     }
 }

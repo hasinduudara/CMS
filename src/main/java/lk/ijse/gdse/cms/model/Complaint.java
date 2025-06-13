@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 
 public class Complaint {
     private int id;
-    private String userId;
+    private int userId;
     private String title;
     private String description;
     private String status;
@@ -17,7 +17,7 @@ public class Complaint {
     }
 
     public void setUserId(int userId) {
-        this.userId = String.valueOf(userId);
+        this.userId = userId;
     }
 
     public void setTitle(String title) {
@@ -40,15 +40,15 @@ public class Complaint {
         this.complaintTime = Timestamp.valueOf(createdAt);
     }
 
-    public Object getId() {
+    public int getId() {
         return id;
     }
 
-    public Object getTitle() {
+    public String getTitle() {
         return title;
     }
 
-    public Object getDescription() {
+    public String getDescription() {
         return description;
     }
 
@@ -56,19 +56,19 @@ public class Complaint {
         return ComplaintStatus.valueOf(status);
     }
 
-    public Object getDateSubmitted() {
+    public LocalDateTime getDateSubmitted() {
         return complaintTime.toLocalDateTime();
     }
 
-    public Object getUserId() {
+    public int getUserId() {
         return userId;
     }
 
-    public Object getRemark() {
+    public String getRemark() {
         return remark;
     }
 
-    public Object getCreatedAt() {
+    public LocalDateTime getCreatedAt() {
         return complaintTime.toLocalDateTime();
     }
 }
