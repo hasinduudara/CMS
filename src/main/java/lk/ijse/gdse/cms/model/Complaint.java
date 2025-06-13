@@ -29,7 +29,7 @@ public class Complaint {
     }
 
     public void setStatus(ComplaintStatus status) {
-        this.status = status;
+        this.status = status.toString();
     }
 
     public void setRemark(String remark) {
@@ -53,7 +53,7 @@ public class Complaint {
     }
 
     public ComplaintStatus getStatus() {
-        return status;
+        return ComplaintStatus.valueOf(status);
     }
 
     public Object getDateSubmitted() {
