@@ -11,6 +11,7 @@
 <html>
 <head>
   <title>Sign Up Page</title>
+  <link rel="stylesheet" type="text/css" href="../css/signup.css">
 </head>
 <body>
 <div class="container">
