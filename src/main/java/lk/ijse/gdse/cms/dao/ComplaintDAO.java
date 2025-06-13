@@ -36,4 +36,29 @@ public class ComplaintDAO {
         }
         return list;
     }
+
+    public List<Complaint> getAllComplaints() {
+        List<Complaint> list = new ArrayList<>();
+
+        try (Connection connection = DBConnection.getConnection()){
+            String sql = "select * from complaints";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                Complaint complaint = new Complaint();
+                complaint.setId(resultSet.getInt("id"));
+                complaint.setUserId(resultSet.getInt("user_id"));
+                complaint.setTitle(resultSet.getString("title"));
+                complaint.setDescription(resultSet.getString("description"));
+                complaint.setStatus(resultSet.getString("status"));
+                complaint.setRemark(resultSet.getString("remark"));
+                complaint.setCreatedAt(resultSet.getTimestamp("created_at").toLocalDateTime());
+                list.add(complaint);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return list;
+    }
 }

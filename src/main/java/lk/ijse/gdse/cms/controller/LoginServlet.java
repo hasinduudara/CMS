@@ -6,10 +6,14 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import lk.ijse.gdse.cms.dao.ComplaintDAO;
 import lk.ijse.gdse.cms.dao.UserDAO;
+import lk.ijse.gdse.cms.model.Complaint;
+import lk.ijse.gdse.cms.model.Role;
 import lk.ijse.gdse.cms.model.User;
 
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
@@ -20,16 +24,15 @@ public class LoginServlet extends HttpServlet {
 
         User user = new UserDAO().login(username, password);
 
-        if (user != null) {
-            HttpSession session = req.getSession();
-            session.setAttribute("user", user.getUsername());
-            session.setAttribute("userId", user.getId());
-            session.setAttribute("role", user.getRole());
-//          resp.sendRedirect("/jsp/dashboard.jsp");
-            resp.sendRedirect(req.getContextPath() + "/jsp/dashboard.jsp");
-
-        } else  {
-            resp.getWriter().println("Invalid username or password");
+        if (user.getRole().equals(Role.EMPLOYEE)) {
+            List<Complaint> complaints = new ComplaintDAO().getComplaintsByUser(user.getId());
+            req.setAttribute("complaints", complaints);
+            req.getRequestDispatcher("/jsp/employee/dashboard.jsp").forward(req, resp);
+        } else if (user.getRole().equals(Role.ADMIN)) {
+            List<Complaint> allComplaints = new ComplaintDAO().getAllComplaints();
+            req.setAttribute("allComplaints", allComplaints);
+            req.getRequestDispatcher("/jsp/admin/dashboard.jsp").forward(req, resp);
         }
+
     }
 }
