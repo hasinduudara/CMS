@@ -13,11 +13,11 @@
 <html>
 <head>
     <title>Login Page</title>
+    <link rel="stylesheet" type="text/css" href="css/index.css">
 </head>
 <body>
 <div class="container">
     <h2>Login Page</h2>
-<%--    <form action="../login" method="post">--%>
     <form action="${pageContext.request.contextPath}/login" method="post">
 
     <label>Username:</label>
