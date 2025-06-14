@@ -24,6 +24,11 @@ public class LoginServlet extends HttpServlet {
 
         User user = new UserDAO().login(username, password);
 
+        HttpSession session = req.getSession(true);
+        session.setAttribute("userId", user.getId());
+        session.setAttribute("username", username);
+        session.setAttribute("role", user.getRole().toString());
+
         if (user.getRole().equals(Role.EMPLOYEE)) {
             List<Complaint> complaints = new ComplaintDAO().getComplaintsByUser(user.getId());
             req.setAttribute("complaints", complaints);
