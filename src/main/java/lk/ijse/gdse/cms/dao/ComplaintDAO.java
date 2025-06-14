@@ -4,10 +4,7 @@ import lk.ijse.gdse.cms.model.Complaint;
 import lk.ijse.gdse.cms.model.ComplaintStatus;
 import lk.ijse.gdse.cms.util.DBConnection;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -65,18 +62,18 @@ public class ComplaintDAO {
 
     public boolean submitComplaint(Complaint complaint) {
         try (Connection connection = DBConnection.getConnection()) {
-            String sql = "INSERT INTO complaints (user_id, title, description, status, created_at) VALUES (?, ?, ?, ?, NOW())";
+            String sql = "INSERT INTO complaints (user_id, title, description, status, created_at) VALUES (?, ?, ?, ?, ?)";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, complaint.getUserId());
             preparedStatement.setString(2, complaint.getTitle());
             preparedStatement.setString(3, complaint.getDescription());
-            preparedStatement.setString(4, "Pending");
+            preparedStatement.setString(4, complaint.getStatus().toString());
+            preparedStatement.setTimestamp(5, Timestamp.valueOf(complaint.getCreatedAt()));
 
             int rowsAffected = preparedStatement.executeUpdate();
             return rowsAffected > 0;
         } catch (SQLException e) {
-            e.printStackTrace(); // Add proper logging here
-            throw new RuntimeException("Error submitting complaint", e);
+            throw new RuntimeException("Failed to submit complaint: " + e.getMessage(), e);
         }
     }
 }

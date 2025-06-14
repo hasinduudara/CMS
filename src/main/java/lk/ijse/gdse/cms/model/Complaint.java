@@ -12,6 +12,21 @@ public class Complaint {
     private String remark;
     private Timestamp complaintTime;
 
+    public void setStatus(lk.ijse.gdse.cms.model.ComplaintStatus status) {
+        this.status = status.toString();
+    }
+
+    public enum ComplaintStatus {
+        PENDING,
+        IN_PROGRESS,
+        RESOLVED
+    }
+
+    public Complaint() {
+        this.status = ComplaintStatus.PENDING.toString();
+        this.complaintTime = new Timestamp(System.currentTimeMillis());
+    }
+
     public void setId(int id) {
         this.id = id;
     }

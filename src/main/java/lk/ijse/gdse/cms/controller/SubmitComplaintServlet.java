@@ -15,25 +15,37 @@ public class SubmitComplaintServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
         HttpSession session = req.getSession(false);
         if (session == null || session.getAttribute("userId") == null) {
-            res.sendRedirect("jsp/employee/complaint_form.jsp");
+            res.sendRedirect("jsp/employee/complaint_form.jsp?error=session");
             return;
         }
 
-        int userId = (int) session.getAttribute("userId");
+        // Get and validate parameters
         String title = req.getParameter("title");
         String description = req.getParameter("description");
 
-        Complaint complaint = new Complaint();
-        complaint.setUserId(userId);
-        complaint.setTitle(title);
-        complaint.setDescription(description);
+        if (title == null || title.trim().isEmpty() || description == null || description.trim().isEmpty()) {
+            res.sendRedirect(req.getContextPath() + "/jsp/employee/complaint_form.jsp?error=empty");
+            return;
+        }
 
-        boolean success = new ComplaintDAO().submitComplaint(complaint);
+        try {
+            int userId = (int) session.getAttribute("userId");
+            
+            Complaint complaint = new Complaint();
+            complaint.setUserId(userId);
+            complaint.setTitle(title.trim());
+            complaint.setDescription(description.trim());
 
-        if (success) {
-            res.sendRedirect(req.getContextPath() + "/jsp/employee/dashboard.jsp");
-        } else {
-            res.sendRedirect(req.getContextPath() + "/jsp/employee/complaint_form.jsp?error=true");
+            boolean success = new ComplaintDAO().submitComplaint(complaint);
+
+            if (success) {
+                res.sendRedirect(req.getContextPath() + "/jsp/employee/dashboard.jsp?success=true");
+            } else {
+                res.sendRedirect(req.getContextPath() + "/jsp/employee/complaint_form.jsp?error=db");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            res.sendRedirect(req.getContextPath() + "/jsp/employee/complaint_form.jsp?error=system");
         }
     }
 }
