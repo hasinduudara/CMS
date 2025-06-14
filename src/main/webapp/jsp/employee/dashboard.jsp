@@ -7,13 +7,16 @@
 <html>
 <head>
   <title>Employee Dashboard</title>
-  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
 </head>
 <body>
 <div class="container">
-  <h2>Welcome, <%= username %> (Employee)</h2>
+  <div class="header-bar">
+    <h2>Welcome, <%= username %> (Employee)</h2>
+    <a href="${pageContext.request.contextPath}/logout" class="btn btn-logout">Logout</a>
+  </div>
 
-  <a href="/submit_complaint.jsp" class="btn">+ Submit New Complaint</a>
+  <a href="${pageContext.request.contextPath}/jsp/employee/submit_complaint.jsp" class="btn">+ Submit New Complaint</a>
 
   <h3>My Complaints</h3>
   <table>
@@ -36,8 +39,8 @@
       <td><%= c.getCreatedAt() %></td>
       <td>
         <% if (!"RESOLVED".equals(c.getStatus())) { %>
-        <a href="edit_complaint.jsp?id=<%= c.getId() %>">Edit</a> |
-        <a href="../../deleteComplaint?id=<%= c.getId() %>" onclick="return confirm('Delete this complaint?')">Delete</a>
+        <a href="${pageContext.request.contextPath}/jsp/employee/edit_complaint.jsp?id=<%= c.getId() %>">Edit</a> |
+        <a href="${pageContext.request.contextPath}/deleteComplaint?id=<%= c.getId() %>" onclick="return confirm('Delete this complaint?')">Delete</a>
         <% } else { %>
         <span>Locked</span>
         <% } %>
