@@ -4,7 +4,7 @@ session="false" %>
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Sign Up Page</title>
+    <title>Sign Up Page - CMS</title>
     <style>
       * {
         margin: 0;

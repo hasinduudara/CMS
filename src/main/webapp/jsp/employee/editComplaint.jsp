@@ -20,7 +20,7 @@
         <div class="header-actions">
             <span class="user-info">Welcome, <%= username %> (Employee)</span>
             <a href="${pageContext.request.contextPath}/employeeDashboard" class="btn btn-secondary">Dashboard</a>
-            <a href="${pageContext.request.contextPath}/logout" class="btn btn-logout">Logout</a>
+            <a href="${pageContext.request.contextPath}/index.jsp" class="btn btn-logout">Logout</a>
         </div>
     </div>
 

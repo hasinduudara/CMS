@@ -6,7 +6,7 @@ session="false" %>
 
 <html>
   <head>
-    <title>Login Page</title>
+    <title>Login Page - CMS</title>
     <link rel="stylesheet" type="text/css" href="css/index.css" />
   </head>
   <body>

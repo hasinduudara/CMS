@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Employee Dashboard</title>
+  <title>Employee Dashboard - CMS</title>
   <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/css/employee_dashboard.css">
 </head>
