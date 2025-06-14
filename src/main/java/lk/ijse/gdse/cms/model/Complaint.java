@@ -75,4 +75,8 @@ public class Complaint {
         }
         this.status = status.toString();
     }
+
+    public boolean getUpdatedAt() {
+        return true;
+    }
 }

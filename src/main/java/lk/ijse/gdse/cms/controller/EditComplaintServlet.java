@@ -49,7 +49,7 @@ public class EditComplaintServlet extends HttpServlet {
             }
 
             request.setAttribute("complaint", complaint);
-            request.getRequestDispatcher("/jsp/employee/edit_complaint.jsp").forward(request, response);
+            request.getRequestDispatcher("/jsp/employee/editComplaint.jsp").forward(request, response);
 
         } catch (NumberFormatException e) {
             response.sendRedirect(request.getContextPath() + "/employeeDashboard?error=Invalid complaint ID");
@@ -76,7 +76,7 @@ public class EditComplaintServlet extends HttpServlet {
         if (idParam == null || title == null || title.trim().isEmpty() ||
                 description == null || description.trim().isEmpty()) {
             request.setAttribute("error", "All fields are required");
-            request.getRequestDispatcher("/jsp/employee/edit_complaint.jsp").forward(request, response);
+            request.getRequestDispatcher("/jsp/employee/editComplaint.jsp").forward(request, response);
             return;
         }
 
