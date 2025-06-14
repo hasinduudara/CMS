@@ -59,21 +59,4 @@ public class ComplaintDAO {
         }
         return list;
     }
-
-    public boolean submitComplaint(Complaint complaint) {
-        try (Connection connection = DBConnection.getConnection()) {
-            String sql = "INSERT INTO complaints (user_id, title, description, status, created_at) VALUES (?, ?, ?, ?, ?)";
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setInt(1, complaint.getUserId());
-            preparedStatement.setString(2, complaint.getTitle());
-            preparedStatement.setString(3, complaint.getDescription());
-            preparedStatement.setString(4, complaint.getStatus().toString());
-            preparedStatement.setTimestamp(5, Timestamp.valueOf(complaint.getCreatedAt()));
-
-            int rowsAffected = preparedStatement.executeUpdate();
-            return rowsAffected > 0;
-        } catch (SQLException e) {
-            throw new RuntimeException("Failed to submit complaint: " + e.getMessage(), e);
-        }
-    }
 }

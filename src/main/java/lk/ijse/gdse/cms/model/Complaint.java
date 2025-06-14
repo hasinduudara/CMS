@@ -12,16 +12,6 @@ public class Complaint {
     private String remark;
     private Timestamp complaintTime;
 
-    public void setStatus(lk.ijse.gdse.cms.model.ComplaintStatus status) {
-        this.status = status.toString();
-    }
-
-    public enum ComplaintStatus {
-        PENDING,
-        IN_PROGRESS,
-        RESOLVED
-    }
-
     public Complaint() {
         this.status = ComplaintStatus.PENDING.toString();
         this.complaintTime = new Timestamp(System.currentTimeMillis());
@@ -41,10 +31,6 @@ public class Complaint {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public void setStatus(ComplaintStatus status) {
-        this.status = status.toString();
     }
 
     public void setRemark(String remark) {
@@ -69,10 +55,6 @@ public class Complaint {
 
     public ComplaintStatus getStatus() {
         return ComplaintStatus.valueOf(status);
-    }
-
-    public LocalDateTime getDateSubmitted() {
-        return complaintTime.toLocalDateTime();
     }
 
     public int getUserId() {

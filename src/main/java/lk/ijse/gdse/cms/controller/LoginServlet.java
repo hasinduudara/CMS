@@ -27,7 +27,7 @@ public class LoginServlet extends HttpServlet {
         if (user.getRole().equals(Role.EMPLOYEE)) {
             List<Complaint> complaints = new ComplaintDAO().getComplaintsByUser(user.getId());
             req.setAttribute("complaints", complaints);
-            req.getRequestDispatcher("/jsp/employee/dashboard.jsp").forward(req, resp);
+            req.getRequestDispatcher("/jsp/employee/employee_dashboard.jsp").forward(req, resp);
         } else if (user.getRole().equals(Role.ADMIN)) {
             List<Complaint> allComplaints = new ComplaintDAO().getAllComplaints();
             req.setAttribute("allComplaints", allComplaints);
