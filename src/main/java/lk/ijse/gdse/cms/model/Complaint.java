@@ -68,4 +68,11 @@ public class Complaint {
     public LocalDateTime getCreatedAt() {
         return complaintTime.toLocalDateTime();
     }
+
+    public void setStatus(ComplaintStatus status) {
+        if (status == null) {
+            throw new IllegalArgumentException("Status cannot be null");
+        }
+        this.status = status.toString();
+    }
 }
