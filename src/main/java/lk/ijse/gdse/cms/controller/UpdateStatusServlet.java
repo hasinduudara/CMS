@@ -48,8 +48,19 @@ public class UpdateStatusServlet extends HttpServlet {
         String status = req.getParameter("status");
         String remark = req.getParameter("remark");
 
+        // Convert status to the format expected by the database
+        if ("Pending".equals(status)) {
+            status = "PENDING";
+        } else if ("In Progress".equals(status)) {
+            status = "IN_PROGRESS";
+        } else if ("Resolved".equals(status)) {
+            status = "RESOLVED";
+        }
+
         ComplaintDAO.updateStatusAndRemark(id, status, remark);
-        resp.sendRedirect("admin-dashboard");
+//        resp.sendRedirect(req.getContextPath() + "/admin-dashboard");
+        req.setAttribute("message", "Complaint status updated successfully.");
+        req.getRequestDispatcher("/jsp/admin/dashboard.jsp").forward(req, resp);
     }
 
 }
