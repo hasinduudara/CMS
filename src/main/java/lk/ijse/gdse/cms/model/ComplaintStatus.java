@@ -24,4 +24,8 @@ public enum ComplaintStatus {
         }
         throw new IllegalArgumentException("Unknown status: " + status);
     }
+
+    public String toLowerCase() {
+        return value.toLowerCase();
+    }
 }
