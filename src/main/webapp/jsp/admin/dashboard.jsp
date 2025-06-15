@@ -350,37 +350,41 @@
         </thead>
         <tbody>
         <% if (allComplaints != null && !allComplaints.isEmpty()) {
-          for (Complaint c : allComplaints) { %>
+          for (Complaint complaint : allComplaints) { %>
         <tr>
           <td>
-            <span class="complaint-id">#<%= c.getId() %></span>
+            <span class="complaint-id">#<%= complaint.getId() %></span>
           </td>
-          <td><%= c.getUserId() %></td>
+          <td><%= complaint.getUserId() %></td>
           <td>
-            <div class="complaint-title"><%= c.getTitle() %></div>
+            <div class="complaint-title"><%= complaint.getTitle() %></div>
             <div class="complaint-description">
-              <%= c.getDescription() != null ? (c.getDescription().length() > 60 ? c.getDescription().substring(0, 60) + "..." : c.getDescription()) : "No description" %>
+              <%= complaint.getDescription() != null ? (complaint.getDescription().length() > 60 ? complaint.getDescription().substring(0, 60) + "..." : complaint.getDescription()) : "No description" %>
             </div>
           </td>
           <td>
-                <span class="status-badge status-<%= c.getStatus().toLowerCase().replace(" ", "-") %>">
-                  <%= c.getStatus() %>
-                </span>
+            <span class="status-badge status-<%= complaint.getStatus().toLowerCase().replace(" ", "-") %>">
+              <%= complaint.getStatus() %>
+            </span>
           </td>
           <td>
             <div class="date-time">
-              <%= c.getCreatedAt() %>
+              <%= complaint.getCreatedAt() %>
             </div>
           </td>
           <td>
-                <span class="remark-text">
-                  <%= c.getRemark() != null ? c.getRemark() : "-" %>
-                </span>
+            <span class="remark-text">
+              <%= complaint.getRemark() != null ? complaint.getRemark() : "-" %>
+            </span>
           </td>
           <td>
             <div class="actions">
-              <a href="<%= request.getContextPath() %>/update-status?id=<%= c.getId() %>" class="btn btn-edit">Edit</a>
-              <a href="../../deleteComplaint?id=<%= c.getId() %>" class="btn btn-delete" onclick="return confirm('Delete this complaint?')">Delete</a>
+              <a href="<%= request.getContextPath() %>/update-status?id=<%= complaint.getId() %>" class="btn btn-edit">Edit</a>
+
+              <form method="get" action="<%= request.getContextPath() %>/confirm-delete-complaint" style="display:inline;">
+                <input type="hidden" name="id" value="<%= complaint.getId() %>">
+                <button type="submit" class="btn btn-delete" onclick="return confirm('Are you sure you want to delete this?')">Delete</button>
+              </form>
             </div>
           </td>
         </tr>

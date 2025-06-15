@@ -138,10 +138,10 @@ public class ComplaintDAO {
         }
     }
 
-    // Delete complaint (only if not resolved)
+    // Delete complaint (remove RESOLVED restriction)
     public boolean deleteComplaint(int id) {
         try (Connection connection = DBConnection.getConnection()) {
-            String sql = "DELETE FROM complaints WHERE id = ? AND status != 'RESOLVED'";
+            String sql = "DELETE FROM complaints WHERE id = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, id);
 
