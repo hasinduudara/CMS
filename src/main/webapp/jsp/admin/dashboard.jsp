@@ -377,6 +377,16 @@
               <%= complaint.getRemark() != null ? complaint.getRemark() : "-" %>
             </span>
           </td>
+<%--          <td>--%>
+<%--            <div class="actions">--%>
+<%--              <a href="<%= request.getContextPath() %>/update-status?id=<%= complaint.getId() %>" class="btn btn-edit">Edit</a>--%>
+
+<%--              <form method="get" action="<%= request.getContextPath() %>/confirm-delete-complaint" style="display:inline;">--%>
+<%--                <input type="hidden" name="id" value="<%= complaint.getId() %>">--%>
+<%--                <button type="submit" class="btn btn-delete" onclick="return confirm('Are you sure you want to delete this?')">Delete</button>--%>
+<%--              </form>--%>
+<%--            </div>--%>
+<%--          </td>--%>
           <td>
             <div class="actions">
               <a href="<%= request.getContextPath() %>/update-status?id=<%= complaint.getId() %>" class="btn btn-edit">Edit</a>
@@ -387,6 +397,7 @@
               </form>
             </div>
           </td>
+
         </tr>
         <% }} else { %>
         <tr>
