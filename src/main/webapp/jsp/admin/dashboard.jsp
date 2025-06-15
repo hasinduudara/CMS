@@ -379,7 +379,7 @@
           </td>
           <td>
             <div class="actions">
-              <a href="update_status.jsp?id=<%= c.getId() %>" class="btn btn-edit">Edit</a>
+              <a href="<%= request.getContextPath() %>/update-status?id=<%= c.getId() %>" class="btn btn-edit">Edit</a>
               <a href="../../deleteComplaint?id=<%= c.getId() %>" class="btn btn-delete" onclick="return confirm('Delete this complaint?')">Delete</a>
             </div>
           </td>

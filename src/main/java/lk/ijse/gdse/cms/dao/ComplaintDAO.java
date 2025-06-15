@@ -10,6 +10,23 @@ import java.util.List;
 
 public class ComplaintDAO {
 
+    public static void updateStatusAndRemark(int id, String status, String remark) {
+        try (Connection connection = DBConnection.getConnection()) {
+            String sql = "UPDATE complaints SET status = ?, remark = ? WHERE id = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, status);
+            preparedStatement.setString(2, remark);
+            preparedStatement.setInt(3, id);
+
+            int rowsAffected = preparedStatement.executeUpdate();
+            if (rowsAffected == 0) {
+                throw new SQLException("No complaint found with ID: " + id);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Error updating complaint status and remark: " + e.getMessage(), e);
+        }
+    }
+
     // Get complaints by user ID
     public List<Complaint> getComplaintsByUser(int userId) {
         List<Complaint> list = new ArrayList<>();
@@ -81,7 +98,7 @@ public class ComplaintDAO {
     }
 
     // Get complaint by ID
-    public Complaint getComplaintById(int id) {
+    public static Complaint getComplaintById(int id) {
         try (Connection connection = DBConnection.getConnection()) {
             String sql = "SELECT * FROM complaints WHERE id = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
