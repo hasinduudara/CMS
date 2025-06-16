@@ -1,4 +1,5 @@
 <%@ page session="true" import="java.util.*, lk.ijse.gdse.cms.model.Complaint" %>
+<%@ page import="lk.ijse.gdse.cms.model.ComplaintStatus" %>
 <%
   String username = (String) session.getAttribute("username");
   List<Complaint> allComplaints = (List<Complaint>) request.getAttribute("allComplaints");
@@ -27,22 +28,29 @@
     </div>
     <div class="stat-card">
       <div class="stat-number">
-        <%= allComplaints != null ? allComplaints.stream().mapToInt(c -> "Pending".equals(c.getStatus()) ? 1 : 0).sum() : 0 %>
+        <%= allComplaints != null ? allComplaints.stream()
+                .filter(c -> c.getStatus() == ComplaintStatus.PENDING)
+                .count() : 0 %>
       </div>
       <div class="stat-label">Pending</div>
     </div>
     <div class="stat-card">
       <div class="stat-number">
-        <%= allComplaints != null ? allComplaints.stream().mapToInt(c -> "In Progress".equals(c.getStatus()) ? 1 : 0).sum() : 0 %>
+        <%= allComplaints != null ? allComplaints.stream()
+                .filter(c -> c.getStatus() == ComplaintStatus.IN_PROGRESS)
+                .count() : 0 %>
       </div>
       <div class="stat-label">In Progress</div>
     </div>
     <div class="stat-card">
       <div class="stat-number">
-        <%= allComplaints != null ? allComplaints.stream().mapToInt(c -> "Resolved".equals(c.getStatus()) ? 1 : 0).sum() : 0 %>
+        <%= allComplaints != null ? allComplaints.stream()
+                .filter(c -> c.getStatus() == ComplaintStatus.RESOLVED)
+                .count() : 0 %>
       </div>
       <div class="stat-label">Resolved</div>
     </div>
+  </div>
   </div>
 
   <div class="section">
