@@ -20,35 +20,35 @@ public class ConfirmDeleteComplaintServlet extends HttpServlet {
         complaintDAO = new ComplaintDAO();
     }
 
-//    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-//            throws ServletException, IOException {
-//        int id = Integer.parseInt(request.getParameter("id"));
-//        Complaint complaint = ComplaintDAO.getComplaintById(id);
-//
-//        if (complaint != null) {
-//            request.setAttribute("complaint", complaint);
-//            request.getRequestDispatcher("jsp/admin/deleteComplaint.jsp").forward(request, response);
-//        } else {
-//            response.sendRedirect("jsp/error.jsp"); // Or show "not found"
-//        }
-//    }
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        Complaint complaint = ComplaintDAO.getComplaintById(id);
 
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        try {
-            int id = Integer.parseInt(request.getParameter("id"));
-            boolean deleted = complaintDAO.deleteComplaint(id);
-
-            if (deleted) {
-                response.sendRedirect(request.getContextPath() + "/admin/dashboard");
-            } else {
-                response.sendRedirect(request.getContextPath() + "/admin/dashboard?error=notfound");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            response.sendRedirect(request.getContextPath() + "/admin/dashboard?error=exception");
+        if (complaint != null) {
+            request.setAttribute("complaint", complaint);
+            request.getRequestDispatcher("jsp/admin/deleteComplaint.jsp").forward(request, response);
+        } else {
+            response.sendRedirect("jsp/error.jsp"); // Or show "not found"
         }
     }
+
+//    @Override
+//    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+//        try {
+//            int id = Integer.parseInt(request.getParameter("id"));
+//            boolean deleted = complaintDAO.deleteComplaint(id);
+//
+//            if (deleted) {
+//                response.sendRedirect(request.getContextPath() + "/admin/dashboard");
+//            } else {
+//                response.sendRedirect(request.getContextPath() + "/admin/dashboard?error=notfound");
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            response.sendRedirect(request.getContextPath() + "/admin/dashboard?error=exception");
+//        }
+//    }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
