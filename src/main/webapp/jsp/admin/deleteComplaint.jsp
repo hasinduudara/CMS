@@ -39,7 +39,7 @@
 <form method="post" action="${pageContext.request.contextPath}/confirm-delete-complaint">
     <input type="hidden" name="id" value="<%= complaint.getId() %>">
     <button type="submit">Yes, Delete</button>
-    <a href="dashboard.jsp"><button type="button">Cancel</button></a>
+    <a href="/jsp/admin/dashboard.jsp"><button type="button">Cancel</button></a>
 </form>
 
 </body>

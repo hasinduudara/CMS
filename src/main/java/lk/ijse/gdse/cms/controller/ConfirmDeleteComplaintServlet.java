@@ -50,7 +50,7 @@ public class ConfirmDeleteComplaintServlet extends HttpServlet {
 
             boolean success = dao.deleteComplaint(id);
             if (success) {
-                response.sendRedirect(request.getContextPath() + "/jsp/admin/dashboard.jsp?msg=deleted");
+                response.sendRedirect(request.getContextPath() + "/list-complaints?msg=deleted");
             } else {
                 request.setAttribute("errorMessage", "Could not delete complaint. It may be in RESOLVED status.");
                 request.getRequestDispatcher("jsp/error.jsp").forward(request, response);
