@@ -7,25 +7,7 @@
 <html>
 <head>
     <title>Delete Complaint</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            padding: 20px;
-        }
-
-        .danger {
-            color: red;
-        }
-
-        form {
-            margin-top: 20px;
-        }
-
-        button {
-            padding: 10px 20px;
-            margin-right: 10px;
-        }
-    </style>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin_delete.css">
 </head>
 <body>
 

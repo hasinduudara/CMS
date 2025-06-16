@@ -48,7 +48,6 @@ public class UpdateStatusServlet extends HttpServlet {
         String status = req.getParameter("status");
         String remark = req.getParameter("remark");
 
-        // Convert status to the format expected by the database
         if ("Pending".equals(status)) {
             status = "PENDING";
         } else if ("In Progress".equals(status)) {
@@ -58,9 +57,7 @@ public class UpdateStatusServlet extends HttpServlet {
         }
 
         ComplaintDAO.updateStatusAndRemark(id, status, remark);
-//        resp.sendRedirect(req.getContextPath() + "/admin-dashboard");
         req.setAttribute("message", "Complaint status updated successfully.");
-//        req.getRequestDispatcher("/jsp/admin/dashboard.jsp").forward(req, resp);
         resp.sendRedirect(req.getContextPath() + "/list-complaints?msg=deleted");
     }
 
