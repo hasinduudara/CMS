@@ -405,7 +405,7 @@ session="false" %>
           <option value="ADMIN">Admin</option></select
         ><br /><br />
 
-        <button type="submit">Register</button>
+        <button type="submit" class="register-btn">Register</button>
       </form>
       <br />
       <a href="../index.jsp">Already have an account? Login</a>
