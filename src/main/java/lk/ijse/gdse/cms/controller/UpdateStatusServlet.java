@@ -60,7 +60,8 @@ public class UpdateStatusServlet extends HttpServlet {
         ComplaintDAO.updateStatusAndRemark(id, status, remark);
 //        resp.sendRedirect(req.getContextPath() + "/admin-dashboard");
         req.setAttribute("message", "Complaint status updated successfully.");
-        req.getRequestDispatcher("/jsp/admin/dashboard.jsp").forward(req, resp);
+//        req.getRequestDispatcher("/jsp/admin/dashboard.jsp").forward(req, resp);
+        resp.sendRedirect(req.getContextPath() + "/list-complaints?msg=deleted");
     }
 
 }
