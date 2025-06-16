@@ -29,7 +29,7 @@ public class ConfirmDeleteComplaintServlet extends HttpServlet {
             request.setAttribute("complaint", complaint);
             request.getRequestDispatcher("jsp/admin/deleteComplaint.jsp").forward(request, response);
         } else {
-            response.sendRedirect("jsp/error.jsp"); // Or show "not found"
+            response.sendRedirect("jsp/error.jsp");
         }
     }
 
@@ -40,7 +40,6 @@ public class ConfirmDeleteComplaintServlet extends HttpServlet {
             int id = Integer.parseInt(request.getParameter("id"));
             ComplaintDAO dao = new ComplaintDAO();
 
-            // First check if the complaint exists and get its status
             Complaint complaint = ComplaintDAO.getComplaintById(id);
             if (complaint == null) {
                 request.setAttribute("errorMessage", "Complaint not found");

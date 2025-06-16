@@ -36,7 +36,6 @@ public class EditComplaintServlet extends HttpServlet {
             int complaintId = Integer.parseInt(idParam);
             int userId = (Integer) session.getAttribute("userId");
 
-            // Check if user can modify this complaint
             if (!complaintDAO.canUserModifyComplaint(complaintId, userId)) {
                 response.sendRedirect(request.getContextPath() + "/employeeDashboard?error=Cannot edit this complaint");
                 return;
@@ -84,7 +83,6 @@ public class EditComplaintServlet extends HttpServlet {
             int complaintId = Integer.parseInt(idParam);
             int userId = (Integer) session.getAttribute("userId");
 
-            // Check if user can modify this complaint
             if (!complaintDAO.canUserModifyComplaint(complaintId, userId)) {
                 response.sendRedirect(request.getContextPath() + "/employeeDashboard?error=Cannot edit this complaint");
                 return;

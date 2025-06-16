@@ -1,5 +1,4 @@
-<%-- Created by IntelliJ IDEA. User: hasid Date: 6/12/2025 Time: 1:32 PM To
-change this template use File | Settings | File Templates. --%> <%@ page
+<%@ page
 session="false" %>
 <!DOCTYPE html>
 <html>

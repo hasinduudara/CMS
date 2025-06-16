@@ -44,7 +44,6 @@ public class SubmitComplaintServlet extends HttpServlet {
         String title = request.getParameter("title");
         String description = request.getParameter("description");
 
-        // Validate input
         if (title == null || title.trim().isEmpty() ||
                 description == null || description.trim().isEmpty()) {
             request.setAttribute("error", "Title and description are required");

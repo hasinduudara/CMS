@@ -27,7 +27,6 @@ public class ComplaintDAO {
         }
     }
 
-    // Get complaints by user ID
     public List<Complaint> getComplaintsByUser(int userId) {
         List<Complaint> list = new ArrayList<>();
 
@@ -54,7 +53,6 @@ public class ComplaintDAO {
         return list;
     }
 
-    // Get all complaints
     public List<Complaint> getAllComplaints() {
         List<Complaint> list = new ArrayList<>();
 
@@ -80,7 +78,6 @@ public class ComplaintDAO {
         return list;
     }
 
-    // Insert new complaint
     public boolean insertComplaint(Complaint complaint) {
         try (Connection connection = DBConnection.getConnection()) {
             String sql = "INSERT INTO complaints (user_id, title, description, status) VALUES (?, ?, ?, ?)";
@@ -97,7 +94,6 @@ public class ComplaintDAO {
         }
     }
 
-    // Get complaint by ID
     public static Complaint getComplaintById(int id) {
         try (Connection connection = DBConnection.getConnection()) {
             String sql = "SELECT * FROM complaints WHERE id = ?";
@@ -122,7 +118,6 @@ public class ComplaintDAO {
         return null;
     }
 
-    // Update complaint (only if not resolved)
     public boolean updateComplaint(Complaint complaint) {
         try (Connection connection = DBConnection.getConnection()) {
             String sql = "UPDATE complaints SET title = ?, description = ? WHERE id = ? AND status != 'RESOLVED'";
@@ -138,7 +133,6 @@ public class ComplaintDAO {
         }
     }
 
-    // Delete complaint (remove RESOLVED restriction)
     public boolean deleteComplaint(int id) {
         try (Connection connection = DBConnection.getConnection()) {
             String sql = "DELETE FROM complaints WHERE id = ?";
@@ -152,7 +146,6 @@ public class ComplaintDAO {
         }
     }
 
-    // Check if complaint belongs to user and is not resolved
     public boolean canUserModifyComplaint(int complaintId, int userId) {
         try (Connection connection = DBConnection.getConnection()) {
             String sql = "SELECT COUNT(*) FROM complaints WHERE id = ? AND user_id = ? AND status != 'RESOLVED'";

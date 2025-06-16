@@ -21,7 +21,6 @@
     </div>
   </div>
 
-  <!-- Success/Error Messages -->
   <% if (success != null) { %>
   <div class="alert alert-success">
     <%= success %>
@@ -34,14 +33,12 @@
   </div>
   <% } %>
 
-  <!-- Action Section -->
   <div class="action-section">
     <a href="${pageContext.request.contextPath}/submitComplaint" class="submit-btn">
       + Submit New Complaint
     </a>
   </div>
 
-  <!-- Complaints Statistics -->
   <%
     int totalComplaints = 0;
     int pendingCount = 0;
@@ -85,7 +82,6 @@
     </div>
   </div>
 
-  <!-- Complaints Table -->
   <div class="complaints-section">
     <div class="section-header">
       <h3>My Complaints</h3>

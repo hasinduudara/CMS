@@ -111,7 +111,7 @@
 </div>
 
 <script>
-    // Character counters
+
     function updateCharCounter(inputId, counterId, maxLength) {
         const input = document.getElementById(inputId);
         const counter = document.getElementById(counterId);
@@ -130,15 +130,13 @@
         }
 
         input.addEventListener('input', updateCount);
-        updateCount(); // Initialize
+        updateCount();
     }
 
-    // Initialize character counters
     document.addEventListener('DOMContentLoaded', function() {
         updateCharCounter('title', 'titleCounter', 100);
         updateCharCounter('description', 'descCounter', 1000);
 
-        // Form validation
         document.getElementById('editForm').addEventListener('submit', function(e) {
             const title = document.getElementById('title').value.trim();
             const description = document.getElementById('description').value.trim();
@@ -167,7 +165,6 @@
                 return false;
             }
 
-            // Show loading state
             const submitBtn = this.querySelector('button[type="submit"]');
             submitBtn.disabled = true;
             submitBtn.textContent = 'Updating...';
