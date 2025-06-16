@@ -33,23 +33,6 @@ public class ConfirmDeleteComplaintServlet extends HttpServlet {
         }
     }
 
-//    @Override
-//    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-//        try {
-//            int id = Integer.parseInt(request.getParameter("id"));
-//            boolean deleted = complaintDAO.deleteComplaint(id);
-//
-//            if (deleted) {
-//                response.sendRedirect(request.getContextPath() + "/admin/dashboard");
-//            } else {
-//                response.sendRedirect(request.getContextPath() + "/admin/dashboard?error=notfound");
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            response.sendRedirect(request.getContextPath() + "/admin/dashboard?error=exception");
-//        }
-//    }
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
