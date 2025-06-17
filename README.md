@@ -3,13 +3,13 @@ Complaint Management System (CMS)
 📌 Project Description
 Complaint Management System (CMS) is a full-stack web-based application designed to streamline the process of handling employee complaints within an organization. The system offers a user-friendly interface where employees can submit, edit, and track their complaints, while admins can manage, update, and resolve them effectively.
 
-🔧 Technologies Used
-Java EE (Jakarta EE)
-JSP & Servlets
-JavaBeans
-MySQL
-Apache Tomcat
-DBCP (Database Connection Pooling)
+🔧 Technologies Used -
+Java EE (Jakarta EE) , 
+JSP & Servlets , 
+JavaBeans , 
+MySQL , 
+Apache Tomcat , 
+DBCP (Database Connection Pooling) , 
 HTML, CSS
 
 📁 Project Structure
